@@ -100,6 +100,9 @@
     <Compile Include="Windows\ShipList.xaml.cs">
       <DependentUpon>ShipList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\TourAccounting.xaml.cs">
+      <DependentUpon>TourAccounting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\TourInfo.xaml.cs">
       <DependentUpon>TourInfo.xaml</DependentUpon>
     </Compile>
@@ -208,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ShipList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\TourAccounting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
