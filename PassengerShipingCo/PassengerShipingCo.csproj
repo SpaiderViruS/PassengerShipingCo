@@ -70,6 +70,9 @@
     <Compile Include="UserControls\ShipControl.xaml.cs">
       <DependentUpon>ShipControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TourAccounting.xaml.cs">
+      <DependentUpon>TourAccounting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\TourControl.xaml.cs">
       <DependentUpon>TourControl.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ShipControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TourAccounting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassengerShipingCo.Windows"
         mc:Ignorable="d"
-        Title="TourAccounting" Height="450" Width="800">
+        Title="Учёт тура" Height="500" Width="850" MinHeight="475" MinWidth="825">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Учёт тура" Grid.Column="1" HorizontalAlignment="Right"/>
+
+            <Label Content="Откуда" Grid.Row="1"/>
+            <TextBox x:Name="DepartureTextBox" Grid.Row="2"/>
+
+            <Label Content="Куда" Grid.Row="1" Grid.Column="1"/>
+            <TextBox x:Name="ArrivalTextBox" Grid.Row="2" Grid.Column="1"/>
+
+            <Label Content="Дата отбытия" Grid.Row="1" Grid.Column="2"/>
+            <DatePicker x:Name="DepartureDatePicker" Grid.Row="2" Grid.Column="2"/>
+
+            <Label Content="Дата прибытия" Grid.Row="1" Grid.Column="3"/>
+            <DatePicker x:Name="ArrivalDatePicker" Grid.Row="2" Grid.Column="3"/>
+        </Grid>
+
+        <ListView x:Name="TourAccountingListView" Grid.Row="1"/>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+
+            <Button x:Name="ExitBtn" Content="Выход" Grid.Column="2"/>
+        </Grid>
+
     </Grid>
 </Window>

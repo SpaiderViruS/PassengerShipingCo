@@ -10,27 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PassengerShipingCo.Entity;
-using PassengerShipingCo.UserControls;
 
-namespace PassengerShipingCo.Windows
+namespace PassengerShipingCo.UserControls
 {
     /// <summary>
     /// Логика взаимодействия для TourAccounting.xaml
     /// </summary>
-    public partial class TourAccounting : Window
+    public partial class TourAccounting : UserControl
     {
-        PassengerShippingEntities Dbcontext;
 
-
+        Tour Tour { get; set; }
+        
         public TourAccounting()
         {
             InitializeComponent();
-            Dbcontext = new PassengerShippingEntities();
-
-            DepartureDatePicker.DisplayDateStart = DateTime.Now;
-            ArrivalDatePicker.DisplayDateEnd = DateTime.Now;
         }
     }
 }
