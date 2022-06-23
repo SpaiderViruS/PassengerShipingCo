@@ -58,13 +58,15 @@ namespace PassengerShipingCo.Windows
 
         private void CaptainsListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Captain selectedCaptain = Dbcontext.Captain.Where(c => 
-            CaptainsListView.SelectedItem.ToString().Contains(c.Name) &&
-            CaptainsListView.SelectedItem.ToString().Contains(c.SecondName)).FirstOrDefault();
+            if (CaptainsListView.SelectedItem != null)
+            {
+                Captain selectedCaptain = Dbcontext.Captain.Where(c =>
+                CaptainsListView.SelectedItem.ToString().Contains(c.Name) &&
+                CaptainsListView.SelectedItem.ToString().Contains(c.SecondName)).FirstOrDefault();
 
-            CaptainRegistration captainRegistration = new CaptainRegistration(selectedCaptain);
-            captainRegistration.ShowDialog();
-
+                CaptainRegistration captainRegistration = new CaptainRegistration(selectedCaptain);
+                captainRegistration.ShowDialog();
+            }
             UpdateCaptainsListView();
         }
     }

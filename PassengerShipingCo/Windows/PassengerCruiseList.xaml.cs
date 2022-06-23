@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PassengerShipingCo.Entity;
+using PassengerShipingCo.UserControls;
 
 namespace PassengerShipingCo.Windows
 {
@@ -27,20 +28,51 @@ namespace PassengerShipingCo.Windows
             InitializeComponent();
             Dbcontext = new PassengerShippingEntities();
 
-            UpdateDataGrid();
+            UpdatePassengerCruiseList();
         }
 
-        private void UpdateDataGrid()
+        private void UpdatePassengerCruiseList()
         {
+            PassengerCruiseListView.Items.Clear();
+
             List<PassengerCruise> displayPassengerCrs = new List<PassengerCruise>();
             displayPassengerCrs = Dbcontext.PassengerCruise.ToList();
 
-            PassengerCruiseDataGrid.ItemsSource = Dbcontext.PassengerCruise.Local;
+            if (!string.IsNullOrEmpty(SearchPassengerCruiseTextBox.Text))
+            {
+                displayPassengerCrs = displayPassengerCrs.Where(p => 
+                p.Passenger.SecondName.ToLower().Contains(SearchPassengerCruiseTextBox.Text.ToLower())).ToList();
+            }
 
-            //foreach (PassengerCruise passengerCruise in displayPassengerCrs)
-            //{
-            //    PassengerCruiseDataGrid.ItemsSource = passengerCruise;
-            //}
+            foreach (PassengerCruise passengerCruise in displayPassengerCrs)
+            {
+                PassengerCruiseListView.Items.Add(new PassengerCruiseControl(passengerCruise)
+                {
+                    Width = GetWidth()
+                });
+            }
+        }
+
+        private double GetWidth()
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                return RenderSize.Width - 55;
+            }
+            else
+            {
+                return Width - 55;
+            }
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void SearchPassengerCruiseTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdatePassengerCruiseList();
         }
     }
 }

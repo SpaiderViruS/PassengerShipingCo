@@ -9,12 +9,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="CountrysListView" Margin="5" SelectionMode="Single"/>
+        <ListView x:Name="CountrysListView" Margin="5" SelectionMode="Single" MouseDoubleClick="CountrysListView_MouseDoubleClick"/>
 
-        <Grid Grid.Row="1">
+        <TextBlock x:Name="CountrysPortsTextBlock" Grid.Row="1"/>
+
+        <Grid Grid.Row="2">
             <Button x:Name="ExitBtn" Content="Назад" Click="ExitBtn_Click"/>
         </Grid>
     </Grid>

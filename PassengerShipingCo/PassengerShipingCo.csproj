@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControls\PassengerCruiseControl.xaml.cs">
+      <DependentUpon>PassengerCruiseControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ShipControl.xaml.cs">
       <DependentUpon>ShipControl.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
     <Compile Include="Windows\UpdateInsertTour.xaml.cs">
       <DependentUpon>UpdateInsertTour.xaml</DependentUpon>
     </Compile>
+    <Page Include="UserControls\PassengerCruiseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ShipControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

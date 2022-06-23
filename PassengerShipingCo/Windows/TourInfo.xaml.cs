@@ -29,7 +29,7 @@ namespace PassengerShipingCo.Windows
             InitializeComponent();
 
             Tour = tour;
-            Dbcontext = new PassengerShippingEntities();
+            Dbcontext = TourList.DbContext;
 
             if (passenger != null)
             {
@@ -53,11 +53,12 @@ namespace PassengerShipingCo.Windows
         {
             if (Tour.Ship.ImageShip != null && Tour.Ship.ImageShip.Length > 0)
             {
-                ShipImage.Source = new BitmapImage(new Uri($"../Images/{Tour.Ship.ImageShip}", UriKind.Relative));
+                Uri resourceUri = new Uri(Environment.CurrentDirectory + Tour.Ship.ImageShip);
+                ShipImage.Source = new BitmapImage(resourceUri);
             }
             else
             {
-                ShipImage.Source = new BitmapImage(new Uri($"../Images/picture.png", UriKind.Relative));
+                ShipImage.Source = new BitmapImage(new Uri("pack://application:,,,/Images/picture.png"));
             }
         }
 
@@ -70,12 +71,15 @@ namespace PassengerShipingCo.Windows
                 passengerCruise.PassengerID = Passenger.ID;
                 passengerCruise.TourID = Tour.ID;
 
+                Tour.NumberOfTicketSold += 1;
+
                 Dbcontext.PassengerCruise.Add(passengerCruise);
                 Dbcontext.SaveChanges();
 
                 SignupCruiseBtn.IsEnabled = false;
 
-                MessageBox.Show($"Вы записались на круиз {Tour.Cruise.Port1} - {Tour.Cruise.Port}\nВремя отбытия {Tour.DepartureTime}", 
+                MessageBox.Show($"Вы записались на круиз {Tour.Cruise.Port1.NamePort} - {Tour.Cruise.Port.NamePort}\n" +
+                    $"Время отбытия {Tour.DepartureTime.ToShortTimeString()}", 
                     "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else

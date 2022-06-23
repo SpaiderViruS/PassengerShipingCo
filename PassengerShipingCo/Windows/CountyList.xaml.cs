@@ -47,5 +47,17 @@ namespace PassengerShipingCo.Windows
         {
             Close();
         }
+
+        private void CountrysListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (CountrysListView.SelectedItem != null)
+            {
+                Countries selectedCounry = Dbcontext.Countries.Where(x => 
+                CountrysListView.SelectedItem.ToString().Contains(x.NameCountry)).FirstOrDefault();
+
+                CountrysPortsTextBlock.Text = $"Предписанные порты: \n" +
+                    $"{ String.Join("\n", selectedCounry.Port.Select(s => s.NamePort).ToList())}";
+            }
+        }
     }
 }
