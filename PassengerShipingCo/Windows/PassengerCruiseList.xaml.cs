@@ -74,5 +74,32 @@ namespace PassengerShipingCo.Windows
         {
             UpdatePassengerCruiseList();
         }
+
+        private void RemovePassengerCruise_Click(object sender, RoutedEventArgs e)
+        {
+            if (PassengerCruiseListView.SelectedItem != null)
+            {
+                PassengerCruise passengerCruise = ((PassengerCruiseControl)PassengerCruiseListView.SelectedItem).PassengerCruise;
+
+                if (MessageBox.Show($"Вы действительно хотите удалить пассажира " +
+                $"{passengerCruise.Passenger.Name} {passengerCruise.Passenger.SecondName} " +
+                $"{passengerCruise.Passenger.LastName}\nИз круиза {passengerCruise.Tour.Cruise.Port1.NamePort}" +
+                $" - {passengerCruise.Tour.Cruise.Port.NamePort}", "Вопрос",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    Dbcontext.PassengerCruise.Remove(passengerCruise);
+                    Dbcontext.SaveChanges();
+
+                    MessageBox.Show("Пассажир удален!", "Информация",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    UpdatePassengerCruiseList();
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
     }
 }

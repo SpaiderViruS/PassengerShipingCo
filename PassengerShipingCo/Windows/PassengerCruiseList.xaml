@@ -31,7 +31,13 @@
             
         </Grid>
 
-        <ListView x:Name="PassengerCruiseListView" SelectionMode="Single" Grid.Row="1"/>
+        <ListView x:Name="PassengerCruiseListView" SelectionMode="Single" Grid.Row="1">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="RemovePassengerCruise" Header="Удалить пассажира" Click="RemovePassengerCruise_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
