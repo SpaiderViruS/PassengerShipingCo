@@ -1,0 +1,41 @@
+﻿<Window x:Class="PassengerShipingCo.Windows.AddEditShip"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PassengerShipingCo.Windows"
+        mc:Ignorable="d"
+        Title="AddEditShip" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <Label Content="Приписанный капитан"/>
+            <ComboBox x:Name="CaptainsComboBox"/>
+
+            <Label Content="Имя судна"/>
+            <TextBox x:Name="NameShipTextBox"/>
+
+            <Label Content="Грузоподъемность"/>
+            <TextBox x:Name="LoadCapacityTextBx" PreviewKeyDown="SeatsTextBox_PreviewKeyDown" PreviewTextInput="SeatsTextBox_PreviewTextInput"/>
+
+            <Label Content="Кол - во мест"/>
+            <TextBox x:Name="SeatsTextBox" PreviewKeyDown="SeatsTextBox_PreviewKeyDown" PreviewTextInput="SeatsTextBox_PreviewTextInput"/>
+
+            <Label Content="Изображение"/>
+            <Image x:Name="ShipImage" Margin="5" Width="75" Height="75" HorizontalAlignment="Left"/>
+            <Button x:Name="ChangeImageBtn" Content="Сменить изображение" HorizontalAlignment="Left" Click="ChangeImageBtn_Click"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AddShipBtn" Content="Редактировать судно" Click="AddShipBtn_Click"/>
+            <Button x:Name="DeleteShipBtn" Content="Удалить судно" Grid.Column="1" Background="Red" Click="DeleteShipBtn_Click"/>
+        </Grid>
+    </Grid>
+</Window>

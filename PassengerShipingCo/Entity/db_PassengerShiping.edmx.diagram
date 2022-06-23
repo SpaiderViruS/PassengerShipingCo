@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b8088c6a18d482bbde06f43fba3e63f" Name="Diagram1">
+        <EntityTypeShape EntityType="db_PassengerShippingModel.Captain" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_PassengerShippingModel.Countries" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_PassengerShippingModel.Cruise" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_PassengerShippingModel.Passenger" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_PassengerShippingModel.PassengerCruise" Width="1.5" PointX="9.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_PassengerShippingModel.Port" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_PassengerShippingModel.Ship" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_PassengerShippingModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_PassengerShippingModel.Tour" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="db_PassengerShippingModel.FK_Ship_Captain" ManuallyRouted="false" />
+        <AssociationConnector Association="db_PassengerShippingModel.FK_Port_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="db_PassengerShippingModel.FK_Cruise_Arrival" ManuallyRouted="false" />
+        <AssociationConnector Association="db_PassengerShippingModel.FK_Cruise_Departure" ManuallyRouted="false" />
+        <AssociationConnector Association="db_PassengerShippingModel.FK_Tour_Cruise" ManuallyRouted="false" />
+        <AssociationConnector Association="db_PassengerShippingModel.FK_PassengerCruise_Passenger" ManuallyRouted="false" />
+        <AssociationConnector Association="db_PassengerShippingModel.FK_PassengerCruise_Tour" ManuallyRouted="false" />
+        <AssociationConnector Association="db_PassengerShippingModel.FK_Tour_Ship" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

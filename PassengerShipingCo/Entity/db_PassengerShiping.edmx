@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище db_PassengerShippingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Captain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumberCaptain" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="LoginCaptain" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordCaptain" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cruise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PortDepartureID" Type="int" Nullable="false" />
+          <Property Name="PortArrivalID" Type="int" Nullable="false" />
+          <Property Name="CostCruise" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthDay" Type="date" Nullable="false" />
+          <Property Name="LoginPassenger" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordPassenger" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PassengerCruise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="PassengerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Port">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="NamePort" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CaptainID" Type="int" Nullable="false" />
+          <Property Name="NameShip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoadCapacity" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Seats" Type="int" Nullable="false" />
+          <Property Name="ImageShip" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tour">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShipID" Type="int" Nullable="false" />
+          <Property Name="CruiseID" Type="int" Nullable="false" />
+          <Property Name="DepartureTime" Type="date" Nullable="false" />
+          <Property Name="ArrivalTime" Type="date" Nullable="false" />
+          <Property Name="NumberOfTicketSold" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cruise_Arrival">
+          <End Role="Port" Type="Self.Port" Multiplicity="1" />
+          <End Role="Cruise" Type="Self.Cruise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cruise">
+              <PropertyRef Name="PortArrivalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cruise_Departure">
+          <End Role="Port" Type="Self.Port" Multiplicity="1" />
+          <End Role="Cruise" Type="Self.Cruise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cruise">
+              <PropertyRef Name="PortDepartureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PassengerCruise_Passenger">
+          <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+          <End Role="PassengerCruise" Type="Self.PassengerCruise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PassengerCruise">
+              <PropertyRef Name="PassengerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PassengerCruise_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PassengerCruise" Type="Self.PassengerCruise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PassengerCruise">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Port_Country">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Port" Type="Self.Port" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Port">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ship_Captain">
+          <End Role="Captain" Type="Self.Captain" Multiplicity="1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Captain">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="CaptainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tour_Cruise">
+          <End Role="Cruise" Type="Self.Cruise" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cruise">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="CruiseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tour_Ship">
+          <End Role="Ship" Type="Self.Ship" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="ShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище db_PassengerShippingModelContainer">
+          <EntitySet Name="Captain" EntityType="Self.Captain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cruise" EntityType="Self.Cruise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passenger" EntityType="Self.Passenger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PassengerCruise" EntityType="Self.PassengerCruise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Port" EntityType="Self.Port" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ship" EntityType="Self.Ship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tour" EntityType="Self.Tour" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cruise_Arrival" Association="Self.FK_Cruise_Arrival">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Cruise" EntitySet="Cruise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cruise_Departure" Association="Self.FK_Cruise_Departure">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Cruise" EntitySet="Cruise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PassengerCruise_Passenger" Association="Self.FK_PassengerCruise_Passenger">
+            <End Role="Passenger" EntitySet="Passenger" />
+            <End Role="PassengerCruise" EntitySet="PassengerCruise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PassengerCruise_Tour" Association="Self.FK_PassengerCruise_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="PassengerCruise" EntitySet="PassengerCruise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Port_Country" Association="Self.FK_Port_Country">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Port" EntitySet="Port" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ship_Captain" Association="Self.FK_Ship_Captain">
+            <End Role="Captain" EntitySet="Captain" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tour_Cruise" Association="Self.FK_Tour_Cruise">
+            <End Role="Cruise" EntitySet="Cruise" />
+            <End Role="Tour" EntitySet="Tour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tour_Ship" Association="Self.FK_Tour_Ship">
+            <End Role="Ship" EntitySet="Ship" />
+            <End Role="Tour" EntitySet="Tour" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_PassengerShippingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Captain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumberCaptain" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginCaptain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordCaptain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ship" Relationship="Self.FK_Ship_Captain" FromRole="Captain" ToRole="Ship" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Port" Relationship="Self.FK_Port_Country" FromRole="Countries" ToRole="Port" />
+        </EntityType>
+        <EntityType Name="Cruise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PortDepartureID" Type="Int32" Nullable="false" />
+          <Property Name="PortArrivalID" Type="Int32" Nullable="false" />
+          <Property Name="CostCruise" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Port" Relationship="Self.FK_Cruise_Arrival" FromRole="Cruise" ToRole="Port" />
+          <NavigationProperty Name="Port1" Relationship="Self.FK_Cruise_Departure" FromRole="Cruise" ToRole="Port" />
+          <NavigationProperty Name="Tour" Relationship="Self.FK_Tour_Cruise" FromRole="Cruise" ToRole="Tour" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LoginPassenger" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordPassenger" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PassengerCruise" Relationship="Self.FK_PassengerCruise_Passenger" FromRole="Passenger" ToRole="PassengerCruise" />
+        </EntityType>
+        <EntityType Name="PassengerCruise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourID" Type="Int32" Nullable="false" />
+          <Property Name="PassengerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Passenger" Relationship="Self.FK_PassengerCruise_Passenger" FromRole="PassengerCruise" ToRole="Passenger" />
+          <NavigationProperty Name="Tour" Relationship="Self.FK_PassengerCruise_Tour" FromRole="PassengerCruise" ToRole="Tour" />
+        </EntityType>
+        <EntityType Name="Port">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="NamePort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK_Port_Country" FromRole="Port" ToRole="Countries" />
+          <NavigationProperty Name="Cruise" Relationship="Self.FK_Cruise_Arrival" FromRole="Port" ToRole="Cruise" />
+          <NavigationProperty Name="Cruise1" Relationship="Self.FK_Cruise_Departure" FromRole="Port" ToRole="Cruise" />
+        </EntityType>
+        <EntityType Name="Ship">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CaptainID" Type="Int32" Nullable="false" />
+          <Property Name="NameShip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoadCapacity" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Seats" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Captain" Relationship="Self.FK_Ship_Captain" FromRole="Ship" ToRole="Captain" />
+          <NavigationProperty Name="Tour" Relationship="Self.FK_Tour_Ship" FromRole="Ship" ToRole="Tour" />
+          <Property Name="ImageShip" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tour">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShipID" Type="Int32" Nullable="false" />
+          <Property Name="CruiseID" Type="Int32" Nullable="false" />
+          <Property Name="DepartureTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ArrivalTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NumberOfTicketSold" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cruise" Relationship="Self.FK_Tour_Cruise" FromRole="Tour" ToRole="Cruise" />
+          <NavigationProperty Name="PassengerCruise" Relationship="Self.FK_PassengerCruise_Tour" FromRole="Tour" ToRole="PassengerCruise" />
+          <NavigationProperty Name="Ship" Relationship="Self.FK_Tour_Ship" FromRole="Tour" ToRole="Ship" />
+        </EntityType>
+        <Association Name="FK_Ship_Captain">
+          <End Role="Captain" Type="Self.Captain" Multiplicity="1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Captain">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ship">
+              <PropertyRef Name="CaptainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Port_Country">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Port" Type="Self.Port" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Port">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cruise_Arrival">
+          <End Role="Port" Type="Self.Port" Multiplicity="1" />
+          <End Role="Cruise" Type="Self.Cruise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cruise">
+              <PropertyRef Name="PortArrivalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cruise_Departure">
+          <End Role="Port" Type="Self.Port" Multiplicity="1" />
+          <End Role="Cruise" Type="Self.Cruise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Port">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cruise">
+              <PropertyRef Name="PortDepartureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tour_Cruise">
+          <End Role="Cruise" Type="Self.Cruise" Multiplicity="1" />
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cruise">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="CruiseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PassengerCruise_Passenger">
+          <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+          <End Role="PassengerCruise" Type="Self.PassengerCruise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PassengerCruise">
+              <PropertyRef Name="PassengerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PassengerCruise_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="PassengerCruise" Type="Self.PassengerCruise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PassengerCruise">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tour_Ship">
+          <End Role="Ship" Type="Self.Ship" Multiplicity="1" />
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ship">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="ShipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PassengerShippingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Captain" EntityType="Self.Captain" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" />
+          <EntitySet Name="Cruise" EntityType="Self.Cruise" />
+          <EntitySet Name="Passenger" EntityType="Self.Passenger" />
+          <EntitySet Name="PassengerCruise" EntityType="Self.PassengerCruise" />
+          <EntitySet Name="Port" EntityType="Self.Port" />
+          <EntitySet Name="Ship" EntityType="Self.Ship" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tour" EntityType="Self.Tour" />
+          <AssociationSet Name="FK_Ship_Captain" Association="Self.FK_Ship_Captain">
+            <End Role="Captain" EntitySet="Captain" />
+            <End Role="Ship" EntitySet="Ship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Port_Country" Association="Self.FK_Port_Country">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Port" EntitySet="Port" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cruise_Arrival" Association="Self.FK_Cruise_Arrival">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Cruise" EntitySet="Cruise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cruise_Departure" Association="Self.FK_Cruise_Departure">
+            <End Role="Port" EntitySet="Port" />
+            <End Role="Cruise" EntitySet="Cruise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tour_Cruise" Association="Self.FK_Tour_Cruise">
+            <End Role="Cruise" EntitySet="Cruise" />
+            <End Role="Tour" EntitySet="Tour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PassengerCruise_Passenger" Association="Self.FK_PassengerCruise_Passenger">
+            <End Role="Passenger" EntitySet="Passenger" />
+            <End Role="PassengerCruise" EntitySet="PassengerCruise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PassengerCruise_Tour" Association="Self.FK_PassengerCruise_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="PassengerCruise" EntitySet="PassengerCruise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tour_Ship" Association="Self.FK_Tour_Ship">
+            <End Role="Ship" EntitySet="Ship" />
+            <End Role="Tour" EntitySet="Tour" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище db_PassengerShippingModelContainer" CdmEntityContainer="PassengerShippingEntities">
+          <EntitySetMapping Name="Captain">
+            <EntityTypeMapping TypeName="db_PassengerShippingModel.Captain">
+              <MappingFragment StoreEntitySet="Captain">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumberCaptain" ColumnName="PhoneNumberCaptain" />
+                <ScalarProperty Name="LoginCaptain" ColumnName="LoginCaptain" />
+                <ScalarProperty Name="PasswordCaptain" ColumnName="PasswordCaptain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="db_PassengerShippingModel.Countries">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameCountry" ColumnName="NameCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cruise">
+            <EntityTypeMapping TypeName="db_PassengerShippingModel.Cruise">
+              <MappingFragment StoreEntitySet="Cruise">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PortDepartureID" ColumnName="PortDepartureID" />
+                <ScalarProperty Name="PortArrivalID" ColumnName="PortArrivalID" />
+                <ScalarProperty Name="CostCruise" ColumnName="CostCruise" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passenger">
+            <EntityTypeMapping TypeName="db_PassengerShippingModel.Passenger">
+              <MappingFragment StoreEntitySet="Passenger">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="LoginPassenger" ColumnName="LoginPassenger" />
+                <ScalarProperty Name="PasswordPassenger" ColumnName="PasswordPassenger" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PassengerCruise">
+            <EntityTypeMapping TypeName="db_PassengerShippingModel.PassengerCruise">
+              <MappingFragment StoreEntitySet="PassengerCruise">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="PassengerID" ColumnName="PassengerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Port">
+            <EntityTypeMapping TypeName="db_PassengerShippingModel.Port">
+              <MappingFragment StoreEntitySet="Port">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="NamePort" ColumnName="NamePort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ship">
+            <EntityTypeMapping TypeName="db_PassengerShippingModel.Ship">
+              <MappingFragment StoreEntitySet="Ship">
+                <ScalarProperty Name="ImageShip" ColumnName="ImageShip" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CaptainID" ColumnName="CaptainID" />
+                <ScalarProperty Name="NameShip" ColumnName="NameShip" />
+                <ScalarProperty Name="LoadCapacity" ColumnName="LoadCapacity" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db_PassengerShippingModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tour">
+            <EntityTypeMapping TypeName="db_PassengerShippingModel.Tour">
+              <MappingFragment StoreEntitySet="Tour">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ShipID" ColumnName="ShipID" />
+                <ScalarProperty Name="CruiseID" ColumnName="CruiseID" />
+                <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+                <ScalarProperty Name="NumberOfTicketSold" ColumnName="NumberOfTicketSold" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

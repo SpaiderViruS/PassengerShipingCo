@@ -1,0 +1,52 @@
+﻿<Window x:Class="PassengerShipingCo.Windows.RegistrationPassenger"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PassengerShipingCo.Windows"
+        mc:Ignorable="d"
+        Title="RegistrationPassenger" Height="350" Width="400"
+        MinHeight="335" MinWidth="375">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Регистрация" Grid.Column="1" FontSize="24" HorizontalAlignment="Center"/>
+
+        <Label Content="Номер телефона: " Grid.Row="1"/>
+        <TextBox x:Name="PhoneTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding Path = Phone}" PreviewKeyDown="PhoneTextBox_PreviewKeyDown" PreviewTextInput="PhoneTextBox_PreviewTextInput" MaxLength="11"/>
+        
+        <Label Content="Имя: " Grid.Row="2"/>
+        <TextBox x:Name="NameTextBox" Grid.Row="2" Grid.Column="1" Text="{Binding Path=Name}" PreviewKeyDown="PhoneTextBox_PreviewKeyDown" PreviewTextInput="NameTextBox_PreviewTextInput"/>
+
+        <Label Content="Фамилия: " Grid.Row="3"/>
+        <TextBox x:Name="SecondNameTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding Path = SecondName}" PreviewKeyDown="PhoneTextBox_PreviewKeyDown" PreviewTextInput="NameTextBox_PreviewTextInput"/>
+
+        <Label Content="Отчество: " Grid.Row="4"/>
+        <TextBox x:Name="LastNameTextBox" Grid.Row="4" Grid.Column="1" Text="{Binding Path = LastName}" PreviewKeyDown="PhoneTextBox_PreviewKeyDown" PreviewTextInput="NameTextBox_PreviewTextInput"/>
+
+        <Label Content="Дата Рождения: " Grid.Row="5"/>
+        <DatePicker x:Name="BirthDayDatePicker" Grid.Row="5" Grid.Column="1" Margin="5" Text="{Binding Path = BirthDay}"/>
+
+        <Label Content="Логин: " Grid.Row="6"/>
+        <TextBox x:Name="LoginTextBox" Grid.Row="6" Grid.Column="1" Text="{Binding Path = LoginPassenger}" PreviewKeyDown="PhoneTextBox_PreviewKeyDown" PreviewTextInput="NameTextBox_PreviewTextInput"/>
+
+        <Label Content="Пароль: " Grid.Row="7"/>
+        <TextBox x:Name="PasswordTextBox" Grid.Row="7" Grid.Column="1" Text="{Binding Path = PasswordPassenger}"/>
+
+        <Button x:Name="RegistrationPassengerBtn" Content="Зарегистрироваться" Grid.Row="8" Grid.Column="1" Height="35" Click="RegistrationPassengerBtn_Click"/>
+    </Grid>
+</Window>
