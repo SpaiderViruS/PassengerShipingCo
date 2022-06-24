@@ -63,5 +63,11 @@ namespace PassengerShipingCo.Windows
             UpdateInsertTour updateInsertTour = new UpdateInsertTour(null);
             updateInsertTour.ShowDialog();
         }
+
+        private void ShowAccountingTours_Click(object sender, RoutedEventArgs e)
+        {
+            TourAccounting tourAccounting = new TourAccounting();
+            tourAccounting.ShowDialog();
+        }
     }
 }

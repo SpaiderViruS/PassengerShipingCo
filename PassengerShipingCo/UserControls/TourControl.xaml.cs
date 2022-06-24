@@ -46,7 +46,7 @@ namespace PassengerShipingCo.UserControls
             TimeSpan tempTS = Tour.ArrivalTime - Tour.DepartureTime;
             TotalTimeInTravelLabel.Content = $"Время в пути: {tempTS.TotalHours}ч";
 
-            CostLabel.Content = $"Цена: {Tour.Cruise.CostCruise}";
+            CostLabel.Content = $"Цена: {Tour.Cruise.CostCruise} ₽";
         }
 
         private void LoadImages()

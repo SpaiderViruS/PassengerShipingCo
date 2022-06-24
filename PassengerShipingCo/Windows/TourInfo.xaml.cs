@@ -35,6 +35,7 @@ namespace PassengerShipingCo.Windows
             {
                 Passenger = passenger;
                 CheckPassengersCruises();
+                CheckSeats();
             }
 
             LoadLabels();
@@ -46,7 +47,7 @@ namespace PassengerShipingCo.Windows
             DeparturePortLabel.Content = $"Откуда: {Tour.Cruise.Port1.NamePort}";
             ArrivalPortLabel.Content = $"Куда: {Tour.Cruise.Port.NamePort}";
             CountryArrivalLabel.Content = $"Страна прибытия: {Tour.Cruise.Port.Countries.NameCountry}";
-            CostLabel.Content = $"Цена путешествия: {Tour.Cruise.CostCruise} р.";
+            CostLabel.Content = $"Цена путешествия: {Tour.Cruise.CostCruise} ₽";
         }
 
         private void LoadImage()
@@ -100,6 +101,19 @@ namespace PassengerShipingCo.Windows
                 else if (passengerCruise.TourID == Tour.ID)
                 {
                     SignupCruiseBtn.IsEnabled = false;
+                }
+            }
+        }
+
+        private void CheckSeats()
+        {
+            Ship ship = Dbcontext.Ship.Where(p => Tour.ShipID == p.ID).FirstOrDefault();
+            if (ship != null)
+            {
+                if (ship.Seats <= Tour.NumberOfTicketSold)
+                {
+                    SignupCruiseBtn.IsEnabled = false;
+                    NoSeatsLabel.Visibility = Visibility.Visible;
                 }
             }
         }

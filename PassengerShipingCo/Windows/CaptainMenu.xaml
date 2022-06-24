@@ -25,6 +25,7 @@
         <Button x:Name="EditShipsBtn" Content="Просмтр и редактирование судов" Grid.Row="2" Click="EditShipsBtn_Click"/>
         <Button x:Name="EditCaptainsBtn" Content="Просмтр и редкатирование капитанов" Grid.Row="3" Click="EditCaptainsBtn_Click"/>
         <Button x:Name="ShowPassengerCruiseBtn" Content="Просмтр пассажиров круиза" Grid.Row="4" Click="ShowPassengerCruiseBtn_Click"/>
+        <Button x:Name="ShowAccountingTours" Content="Просмотр учёта туров" Grid.Row="5" Click="ShowAccountingTours_Click"/>
 
         <Button x:Name="CloseBtn" Content="Назад" Grid.Row="8" Click="CloseBtn_Click"/>
 

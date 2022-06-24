@@ -23,6 +23,8 @@ namespace PassengerShipingCo.Windows
     {
         PassengerShippingEntities Dbcontext;
 
+        bool DateDepartureChanged = false;
+        bool DateArrivalChanged = false;
 
         public TourAccounting()
         {
@@ -30,7 +32,95 @@ namespace PassengerShipingCo.Windows
             Dbcontext = new PassengerShippingEntities();
 
             DepartureDatePicker.DisplayDateStart = DateTime.Now;
-            ArrivalDatePicker.DisplayDateEnd = DateTime.Now;
+            ArrivalDatePicker.DisplayDateStart = DateTime.Now;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateAccountingListView();
+        }
+
+        private void UpdateAccountingListView()
+        {
+            TourAccountingListView.Items.Clear();
+
+            List<Tour> displayTours = new List<Tour>();
+            displayTours = Dbcontext.Tour.ToList();
+
+            if (DateArrivalChanged && DateDepartureChanged)
+            {
+                if (ArrivalDatePicker.SelectedDate != null && 
+                    DepartureDatePicker.SelectedDate != null)
+                {
+                    displayTours = displayTours.Where(t =>
+                    t.DepartureTime >= DepartureDatePicker.SelectedDate &&
+                    t.ArrivalTime <= ArrivalDatePicker.SelectedDate).ToList();
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(DepartureTextBox.Text))
+            {
+                displayTours = displayTours.Where(t =>
+                t.Cruise.Port1.NamePort.ToLower().Contains(DepartureTextBox.Text.ToLower())).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(ArrivalTextBox.Text))
+            {
+                displayTours = displayTours.Where(t =>
+                t.Cruise.Port.NamePort.ToLower().Contains(ArrivalTextBox.Text.ToLower())).ToList();
+            }
+
+            foreach (Tour tour in displayTours)
+            {
+                TourAccountingListView.Items.Add(new TourAccountingControl(tour)
+                {
+                    Width = GetOptimizedWidth()
+                });
+            }
+        }
+
+        private double GetOptimizedWidth()
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                return RenderSize.Width - 55;
+            }
+            else
+            {
+                return Width - 55;
+            }
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            UpdateAccountingListView();
+        }
+
+        private void DepartureDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateDepartureChanged = true;
+            UpdateAccountingListView();
+        }
+
+        private void ArrivalDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateArrivalChanged = true;
+            UpdateAccountingListView();
+        }
+
+        private void DepartureTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateAccountingListView();
+        }
+
+        private void ArrivalTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateAccountingListView();
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
