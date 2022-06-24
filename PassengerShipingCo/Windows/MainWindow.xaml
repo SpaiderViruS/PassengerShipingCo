@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassengerShipingCo"
         mc:Ignorable="d"
-        Title="Авторизация" Height="250" Width="550">
+        Title="Авторизация" Height="250" Width="550" MinHeight="240" MinWidth="525">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -19,6 +19,8 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+
+        <Image Margin="5" Source="/Images/SeaWindLogo.png" Stretch="UniformToFill"/>
 
         <Label Content="Авторизация" FontSize="24" Grid.Column="1" HorizontalAlignment="Center"/>
 

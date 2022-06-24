@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassengerShipingCo.Windows"
         mc:Ignorable="d"
-        Title="Учёт тура" Height="500" Width="850" MinHeight="475" MinWidth="825" Loaded="Window_Loaded"
+        Title="Учёт тура" Height="600" Width="900" MinHeight="475" MinWidth="825" Loaded="Window_Loaded"
         SizeChanged="Window_SizeChanged">
     <Grid>
         <Grid.RowDefinitions>

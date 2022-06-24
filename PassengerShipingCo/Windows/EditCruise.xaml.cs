@@ -42,8 +42,8 @@ namespace PassengerShipingCo.Windows
             else
             {
                 Cruise = new Cruise();
-                EditCruiseBtn.Content = "Добавить тур";
-                Title = "Добавить тур";
+                EditCruiseBtn.Content = "Добавить криуз";
+                Title = "Добавить криуз";
                 DelteCruiseBtn.Visibility = Visibility.Hidden;
             }
         }

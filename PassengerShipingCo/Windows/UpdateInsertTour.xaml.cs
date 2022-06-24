@@ -38,6 +38,8 @@ namespace PassengerShipingCo.Windows
                 DepartureDatePicker.SelectedDate = Tour.DepartureTime;
                 ArrivalDatePicker.SelectedDate = Tour.ArrivalTime;
 
+                Title = "Редактировать тур";
+
                 LoadCruises();
             }
             else

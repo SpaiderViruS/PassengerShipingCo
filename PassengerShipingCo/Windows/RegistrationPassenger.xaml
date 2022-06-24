@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassengerShipingCo.Windows"
         mc:Ignorable="d"
-        Title="RegistrationPassenger" Height="350" Width="400"
+        Title="Регистрация" Height="350" Width="400"
         MinHeight="335" MinWidth="375">
     <Grid>
         <Grid.ColumnDefinitions>

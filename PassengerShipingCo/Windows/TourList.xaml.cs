@@ -35,6 +35,7 @@ namespace PassengerShipingCo.Windows
             {
                 Passenger = passenger;
                 SNPLabel.Content = $"Пассажир {Passenger.SecondName} {Passenger.Name} {Passenger.LastName}";
+                MenuCaptainBtn.Visibility = Visibility.Collapsed;
                 MessageBox.Show("Passenger");
             }
 

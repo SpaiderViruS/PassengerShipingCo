@@ -101,5 +101,10 @@ namespace PassengerShipingCo.Windows
                 }
             }
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            UpdatePassengerCruiseList();
+        }
     }
 }

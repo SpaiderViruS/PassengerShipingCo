@@ -40,6 +40,8 @@ namespace PassengerShipingCo.Windows
                 LoadCapacityTextBx.Text = Ship.LoadCapacity;
                 SeatsTextBox.Text = Ship.Seats.ToString();
 
+                Title = "Редактировать судно";
+
                 LoadImageShip();
             }
             else
@@ -162,8 +164,9 @@ namespace PassengerShipingCo.Windows
 
         private void DeleteShipBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить судно?\nВнимание, если вы удалите судно, то все туры и круизы будут" +
-                "так же удалены", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Вы действительно хотите удалить судно?\nВнимание, если вы удалите судно, " +
+                "то все туры и круизы, которые совершает судно будут так же удалены", 
+                "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 Dbcontext.Ship.Remove(Ship);
                 Dbcontext.SaveChanges();

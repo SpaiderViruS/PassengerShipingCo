@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassengerShipingCo.Windows"
         mc:Ignorable="d"
-        Title="TourInfo" Height="450" Width="850"
+        Title="Информация о туре" Height="450" Width="850"
         MinHeight="425" MinWidth="825">
     <Grid>
         <Grid.RowDefinitions>
