@@ -14,6 +14,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+            <Image Margin="5" Width="75" Height="75" Source="/Images/SeaWindLogoNew.png" />
             <Label x:Name="DeparturePortLabel" FontSize="16"/>
             <Label x:Name="ArrivalPortLabel" FontSize="16"/>
             <Label x:Name="TotalTravelTimeLabel" FontSize="16"/>

@@ -26,6 +26,8 @@ namespace PassengerShipingCo.Windows
         bool DateDepartureChanged = false;
         bool DateArrivalChanged = false;
 
+        int TotalProfitForPeriod;
+
         public TourAccounting()
         {
             InitializeComponent();
@@ -76,7 +78,11 @@ namespace PassengerShipingCo.Windows
                 {
                     Width = GetOptimizedWidth()
                 });
+                TotalProfitForPeriod += tour.NumberOfTicketSold * tour.Cruise.CostCruise;
             }
+
+            TotalProfitForPeriodLabel.Content = $"Прибыль за выбранный период {TotalProfitForPeriod} ₽";
+            TotalProfitForPeriod = 0;
         }
 
         private double GetOptimizedWidth()

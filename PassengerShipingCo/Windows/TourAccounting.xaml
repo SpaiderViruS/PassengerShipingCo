@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassengerShipingCo.Windows"
         mc:Ignorable="d"
-        Title="Учёт тура" Height="600" Width="900" MinHeight="475" MinWidth="825" Loaded="Window_Loaded"
+        Title="Учёт тура" Height="800" Width="1300" MinHeight="775" MinWidth="1250" Loaded="Window_Loaded"
         SizeChanged="Window_SizeChanged">
     <Grid>
         <Grid.RowDefinitions>
@@ -27,6 +27,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Content="Учёт тура" Grid.Column="1" HorizontalAlignment="Right"/>
+            <Label x:Name="TotalProfitForPeriodLabel" HorizontalAlignment="Left"/>
 
             <Label Content="Откуда" Grid.Row="1"/>
             <TextBox x:Name="DepartureTextBox" Grid.Row="2" TextChanged="DepartureTextBox_TextChanged"/>
@@ -41,7 +42,7 @@
             <DatePicker x:Name="ArrivalDatePicker" Grid.Row="2" Grid.Column="3" SelectedDateChanged="ArrivalDatePicker_SelectedDateChanged"/>
         </Grid>
 
-        <ListView x:Name="TourAccountingListView" Grid.Row="1"/>
+        <ListView x:Name="TourAccountingListView" Grid.Row="1" SelectionMode="Single"/>
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>

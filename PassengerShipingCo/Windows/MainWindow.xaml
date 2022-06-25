@@ -20,9 +20,16 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Image Margin="5" Source="/Images/SeaWindLogo.png" Stretch="UniformToFill"/>
+        <Image Margin="5" Source="/Images/SeaWindLogoNew.png" Stretch="Fill"/>
 
-        <Label Content="Авторизация" FontSize="24" Grid.Column="1" HorizontalAlignment="Center"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Авторизация" FontSize="24" HorizontalAlignment="Center"/>
+            <Label Content="Морской ветер" Grid.Row="1" HorizontalAlignment="Center"/>
+        </Grid>
 
         <Label Content="Логин:" Grid.Row="1"/>
         <TextBox x:Name="LoginTextBox" Grid.Row="1" Grid.Column="1" Text="radmax"/>

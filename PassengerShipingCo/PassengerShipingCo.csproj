@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\SeaWindLogo.ico</ApplicationIcon>
+    <ApplicationIcon>Images\SeaWindLogoNew.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -289,8 +289,8 @@
       <DependentUpon>db_PassengerShiping.edmx</DependentUpon>
       <LastGenOutput>db_PassengerShiping.cs</LastGenOutput>
     </Content>
-    <Resource Include="Images\SeaWindLogo.ico" />
-    <Resource Include="Images\SeaWindLogo.png" />
+    <Resource Include="Images\SeaWindLogoNew.ico" />
+    <Resource Include="Images\SeaWindLogoNew.png" />
     <Resource Include="Images\picture.png" />
     <Resource Include="Images\AlexandNevskiShip.jpg" />
     <Resource Include="Images\bagemaship.jpg" />

@@ -27,6 +27,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Image Margin="5" HorizontalAlignment="Left" Width="50" Height="50" Source="/Images/SeaWindLogoNew.png"/>
             <Label Content="Туры" Grid.Column="1" HorizontalAlignment="Center"/>
 
             <Label x:Name="SNPLabel" Grid.Column="2" HorizontalAlignment="Right"/>

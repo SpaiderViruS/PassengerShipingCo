@@ -38,6 +38,8 @@ namespace PassengerShipingCo.Windows
                 PortDepartureComboBox.SelectedIndex = Dbcontext.Port.ToList().IndexOf(Cruise.Port1);
                 PortArrivalComboBox.SelectedIndex = Dbcontext.Port.ToList().IndexOf(Cruise.Port);
                 CostTextBox.Text = Cruise.CostCruise.ToString();
+
+                DelteCruiseBtn.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -50,29 +52,45 @@ namespace PassengerShipingCo.Windows
 
         private void EditCruiseBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(CostTextBox.Text) && PortArrivalComboBox.SelectedIndex != -1 
+            if (!string.IsNullOrEmpty(CostTextBox.Text) && PortArrivalComboBox.SelectedIndex != -1
                 && PortDepartureComboBox.SelectedIndex != -1)
             {
-                if (EditCruiseBtn.Content.ToString() == "Внести измения")
-                {
-                    Cruise.PortDepartureID = PortDepartureComboBox.SelectedIndex + 1;
-                    Cruise.PortArrivalID = PortArrivalComboBox.SelectedIndex + 1;
-                    Cruise.CostCruise = Convert.ToInt32(CostTextBox.Text);
 
-                    Dbcontext.SaveChanges();
-                    MessageBox.Show("Круиз изменён!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Close();
+                Port tempDeparturePort = Dbcontext.Port.Where(p => PortDepartureComboBox.Text.Contains(p.NamePort)).FirstOrDefault();
+                Port tempArrivalPort = Dbcontext.Port.Where(p => PortArrivalComboBox.Text.Contains(p.NamePort)).FirstOrDefault();
+
+                int tempDepartureID = tempDeparturePort.ID;
+                int tempArrivalPortID = tempArrivalPort.ID;
+
+                if (tempArrivalPortID != tempDepartureID) 
+                {
+
+                    if (EditCruiseBtn.Content.ToString() == "Внести измения")
+                    {
+                        Cruise.PortDepartureID = tempDepartureID;
+                        Cruise.PortArrivalID = tempArrivalPortID;
+                        Cruise.CostCruise = Convert.ToInt32(CostTextBox.Text);
+
+                        Dbcontext.SaveChanges();
+                        MessageBox.Show("Круиз изменён!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Close();
+                    }
+                    else
+                    {
+                        Cruise.PortDepartureID = tempDepartureID;
+                        Cruise.PortArrivalID = tempArrivalPortID;
+                        Cruise.CostCruise = Convert.ToInt32(CostTextBox.Text);
+
+                        Dbcontext.Cruise.Add(Cruise);
+                        Dbcontext.SaveChanges();
+                        MessageBox.Show("Криуз добавлен!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Close();
+                    }
                 }
                 else
                 {
-                    Cruise.PortDepartureID = PortDepartureComboBox.SelectedIndex + 1;
-                    Cruise.PortArrivalID = PortArrivalComboBox.SelectedIndex + 1;
-                    Cruise.CostCruise = Convert.ToInt32(CostTextBox.Text);
-
-                    Dbcontext.Cruise.Add(Cruise);
-                    Dbcontext.SaveChanges();
-                    MessageBox.Show("Криуз добавлен!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Close();
+                    MessageBox.Show("Порт прибытия и отбытия не может быть одинаковым!", "Информация",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             else

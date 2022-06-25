@@ -169,5 +169,23 @@ namespace PassengerShipingCo.Windows
             PortsComboBox.Items.Clear();
             LoadCruises();
         }
+
+        private void PortsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EditCruise.Visibility = Visibility.Visible;
+        }
+
+        private void EditCruise_Click(object sender, RoutedEventArgs e)
+        {
+
+            Cruise tempCruise = Dbcontext.Cruise.Where(c =>
+                    PortsComboBox.Text.Contains(c.Port.NamePort) &&
+                    PortsComboBox.Text.Contains(c.Port1.NamePort)).FirstOrDefault();
+
+            EditCruise editCruiser = new EditCruise(tempCruise);
+            editCruiser.ShowDialog();
+            PortsComboBox.Items.Clear();
+            LoadCruises();
+        }
     }
 }

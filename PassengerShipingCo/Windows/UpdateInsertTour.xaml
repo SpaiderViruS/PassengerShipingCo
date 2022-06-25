@@ -14,8 +14,11 @@
         <StackPanel Orientation="Vertical">
             <Label Content="Порт отбытия - прибытия" FontSize="16"/>
 
-            <ComboBox x:Name="PortsComboBox"/>
-            <Button x:Name="AddNewCruise" FontSize="16" Content="Добавить новый криуз" HorizontalAlignment="Left" Click="AddNewCruise_Click"/>
+            <ComboBox x:Name="PortsComboBox" SelectionChanged="PortsComboBox_SelectionChanged"/>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="AddNewCruise" FontSize="16" Content="Добавить новый криуз" HorizontalAlignment="Left" Click="AddNewCruise_Click"/>
+                <Button x:Name="EditCruise" FontSize="16" Content="Изиенить текущий круиз" HorizontalAlignment="Right" Visibility="Collapsed" Click="EditCruise_Click"/>
+            </StackPanel>
 
             <Label Content="Приписанный корабль" FontSize="16"/>
             <ComboBox x:Name="ShipComboBox" DisplayMemberPath="NameShip"/>
