@@ -128,5 +128,16 @@ namespace PassengerShipingCo.Windows
         {
             Close();
         }
+
+        private void AccountingSelectedTours()
+        {
+            List<Tour> selectedTours = new List<Tour>();
+
+            foreach(TourAccountingControl tourAccountingControl in
+                TourAccountingListView.Items)
+            {
+                selectedTours.Add(tourAccountingControl.Tour);
+            }
+        }
     }
 }

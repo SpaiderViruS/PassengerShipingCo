@@ -80,7 +80,7 @@ namespace PassengerShipingCo.Windows
                 SignupCruiseBtn.IsEnabled = false;
 
                 MessageBox.Show($"Вы записались на круиз {Tour.Cruise.Port1.NamePort} - {Tour.Cruise.Port.NamePort}\n" +
-                    $"Время отбытия {Tour.DepartureTime.ToShortTimeString()}", 
+                    $"Время отбытия {Tour.DepartureTime.ToShortDateString()}", 
                     "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
@@ -115,6 +115,18 @@ namespace PassengerShipingCo.Windows
                     SignupCruiseBtn.IsEnabled = false;
                     NoSeatsLabel.Visibility = Visibility.Visible;
                 }
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            if (Tour.DepartureTime < DateTime.Now)
+            {
+                MessageBox.Show("К сожелению, криуз уже начался и на него невозможно записаться",
+                    "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                SignupCruiseBtn.IsEnabled = false;
             }
         }
     }

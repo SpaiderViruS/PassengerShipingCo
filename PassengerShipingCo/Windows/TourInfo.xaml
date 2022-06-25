@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PassengerShipingCo.Windows"
         mc:Ignorable="d"
         Title="Информация о туре" Height="450" Width="850"
-        MinHeight="425" MinWidth="825">
+        MinHeight="425" MinWidth="825" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

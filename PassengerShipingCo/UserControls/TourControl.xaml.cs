@@ -44,6 +44,12 @@ namespace PassengerShipingCo.UserControls
             ArrivalTimeLabel.Content = $"Дата приытия: {Tour.ArrivalTime.ToShortDateString()}";
 
             TimeSpan tempTS = Tour.ArrivalTime - Tour.DepartureTime;
+
+            if (Tour.DepartureTime < DateTime.Now)
+            {
+                CruiseNotAvailable();
+            }
+
             TotalTimeInTravelLabel.Content = $"Время в пути: {tempTS.TotalHours}ч";
 
             CostLabel.Content = $"Цена: {Tour.Cruise.CostCruise} ₽";
@@ -60,6 +66,11 @@ namespace PassengerShipingCo.UserControls
             {
                 ShipImage.Source = new BitmapImage(new Uri("pack://application:,,,/Images/picture.png"));
             }
+        }
+
+        private void CruiseNotAvailable()
+        {
+            Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ff3333"));
         }
     }
 }

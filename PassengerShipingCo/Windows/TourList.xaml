@@ -51,7 +51,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
+            <Button x:Name="CurrentPassengerCruisesBtn" Content="Мои туры" Click="CurrentPassengerCruisesBtn_Click"/>
+
             <Button x:Name="MenuCaptainBtn" Content="Меню сотрудника" Grid.Column="1" Click="MenuCaptainBtn_Click"/>
+
+            <Button x:Name="ExitBtn" Content="Выход" Grid.Column="2" Click="ExitBtn_Click"/>
 
         </Grid>
 

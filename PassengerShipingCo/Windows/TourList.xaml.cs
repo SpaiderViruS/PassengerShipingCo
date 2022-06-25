@@ -53,6 +53,7 @@ namespace PassengerShipingCo.Windows
             {
                 Captain = captain;
                 SNPLabel.Content = $"Капитан {Captain.SecondName} {Captain.Name} {Captain.LastName}";
+                CurrentPassengerCruisesBtn.Visibility = Visibility.Collapsed;
                 MessageBox.Show("Captain");
             }
 
@@ -174,6 +175,19 @@ namespace PassengerShipingCo.Windows
             captainMenu.ShowDialog();
             Show();
             UpdateTourList();
+        }
+
+        private void CurrentPassengerCruisesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentPassengerCruisesList currentPassengerCruisesList = new CurrentPassengerCruisesList(Passenger);
+            Hide();
+            currentPassengerCruisesList.ShowDialog();
+            Show();
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

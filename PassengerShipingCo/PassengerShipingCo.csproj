@@ -94,6 +94,9 @@
     <Compile Include="Windows\CountyList.xaml.cs">
       <DependentUpon>CountyList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\CurrentPassengerCruisesList.xaml.cs">
+      <DependentUpon>CurrentPassengerCruisesList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EditCruise.xaml.cs">
       <DependentUpon>EditCruise.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\CountyList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CurrentPassengerCruisesList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
