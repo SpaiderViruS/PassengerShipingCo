@@ -36,7 +36,6 @@ namespace PassengerShipingCo.Windows
                 Passenger = passenger;
                 SNPLabel.Content = $"Пассажир {Passenger.SecondName} {Passenger.Name} {Passenger.LastName}";
                 MenuCaptainBtn.Visibility = Visibility.Collapsed;
-                MessageBox.Show("Passenger");
             }
 
             DepartureDatePicker.DisplayDateStart = DateTime.Now;
@@ -54,7 +53,6 @@ namespace PassengerShipingCo.Windows
                 Captain = captain;
                 SNPLabel.Content = $"Капитан {Captain.SecondName} {Captain.Name} {Captain.LastName}";
                 CurrentPassengerCruisesBtn.Visibility = Visibility.Collapsed;
-                MessageBox.Show("Captain");
             }
 
             DepartureDatePicker.DisplayDateStart = DateTime.Now;

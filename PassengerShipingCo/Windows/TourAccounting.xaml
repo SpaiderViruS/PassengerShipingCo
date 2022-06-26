@@ -42,7 +42,7 @@
             <DatePicker x:Name="ArrivalDatePicker" Grid.Row="2" Grid.Column="3" SelectedDateChanged="ArrivalDatePicker_SelectedDateChanged"/>
         </Grid>
 
-        <ListView x:Name="TourAccountingListView" Grid.Row="1" SelectionMode="Single"/>
+        <ListView x:Name="TourAccountingListView" Grid.Row="1" SelectionMode="Single" MouseDoubleClick="TourAccountingListView_MouseDoubleClick"/>
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -51,7 +51,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-
+            <Button x:Name="AccountingThisTours" Content="Учёт выбранных за период туров" Grid.Column="1" Visibility="Hidden" Click="AccountingThisTours_Click"/>
             <Button x:Name="ExitBtn" Content="Выход" Grid.Column="2" Click="ExitBtn_Click"/>
         </Grid>
 

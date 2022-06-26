@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassengerShipingCo.Windows"
         mc:Ignorable="d"
-        Title="CurrentPassengerCruisesList" Height="450" Width="800" MinHeight="435" MinWidth="775">
+        Title="Список моих криузов" Height="450" Width="800" MinHeight="435" MinWidth="775">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -17,7 +17,7 @@
             <Label Content="Мои круизы" HorizontalAlignment="Center"/>
         </Grid>
 
-        <ListView x:Name="CurrentPassengerCruiseListView" Grid.Row="1"/>
+        <ListView x:Name="CurrentPassengerCruiseListView" SelectionMode="Single" Grid.Row="1"/>
         <Label x:Name="NoCruisesLabel" Content="Вы незарегистрированы не на один круиз" Grid.Row="1" HorizontalAlignment="Center" 
                VerticalAlignment="Center" FontSize="32" Visibility="Collapsed"/>
 

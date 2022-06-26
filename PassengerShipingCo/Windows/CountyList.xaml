@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassengerShipingCo.Windows"
         mc:Ignorable="d"
-        Title="Список стран" Height="450" Width="500">
+        Title="Список стран" Height="450" Width="500" MinHeight="425" MinWidth="475">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

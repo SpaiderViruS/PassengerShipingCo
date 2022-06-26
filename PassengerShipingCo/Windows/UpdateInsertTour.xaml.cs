@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PassengerShipingCo.Entity;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace PassengerShipingCo.Windows
 {
