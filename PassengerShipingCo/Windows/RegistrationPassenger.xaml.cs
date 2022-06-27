@@ -102,15 +102,5 @@ namespace PassengerShipingCo.Windows
                 e.Handled = true;
             }
         }
-
-        private void PhoneTextBox_PreviewKeyDown_1(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void PhoneTextBox_PreviewTextInput_1(object sender, TextCompositionEventArgs e)
-        {
-
-        }
     }
 }

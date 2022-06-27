@@ -105,21 +105,6 @@ namespace PassengerShipingCo.Windows
             Close();
         }
 
-        private void DelteCruiseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if(MessageBox.Show("Вы действительно хотите удалить круиз?", "Вопрос",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                Dbcontext.Cruise.Remove(Cruise);
-                Dbcontext.SaveChanges();
-                Close();
-            }
-            else
-            {
-                return;
-            }
-        }
-
         private void CostTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));

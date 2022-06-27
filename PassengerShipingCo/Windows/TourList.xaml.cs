@@ -35,6 +35,10 @@ namespace PassengerShipingCo.Windows
             {
                 Passenger = passenger;
                 SNPLabel.Content = $"Пассажир {Passenger.SecondName} {Passenger.Name} {Passenger.LastName}";
+
+                MessageBox.Show($"Вы вошли как пассажир {Passenger.SecondName} {Passenger.Name} " +
+                    $"{Passenger.LastName}", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 MenuCaptainBtn.Visibility = Visibility.Collapsed;
             }
 
@@ -47,11 +51,15 @@ namespace PassengerShipingCo.Windows
             InitializeComponent();
 
             DbContext = new PassengerShippingEntities();
-
+            
             if (captain != null)
             {
                 Captain = captain;
                 SNPLabel.Content = $"Капитан {Captain.SecondName} {Captain.Name} {Captain.LastName}";
+
+                MessageBox.Show($"Вы вошли как капитан {Captain.SecondName} {Captain.Name} " +
+                    $"{Captain.LastName}", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 CurrentPassengerCruisesBtn.Visibility = Visibility.Collapsed;
             }
 

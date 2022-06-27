@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PassengerShipingCo.Windows"
         mc:Ignorable="d"
-        Title="Меню сотрудника" Height="400" Width="400" ResizeMode="NoResize"
-        Closing="Window_Closing">
+        Title="Меню сотрудника" Height="400" Width="400" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

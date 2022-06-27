@@ -31,7 +31,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button x:Name="EditCruiseBtn" Content="Внести измения" FontSize="16" Grid.Row="1" Background="Green" Click="EditCruiseBtn_Click"/>
-            <Button x:Name="DelteCruiseBtn" Content="Удалить круиз" FontSize="16" Grid.Column="1" Background="Red" Click="DelteCruiseBtn_Click"/>
+            <Button x:Name="DelteCruiseBtn" Content="Удалить круиз" FontSize="16" Grid.Column="1" Background="Red" Visibility="Collapsed"/>
             <Button x:Name="CancelBtn" Content="Отмена" FontSize="16" Grid.Column="2" Click="CancelBtn_Click"/>
         </Grid>
 

@@ -78,7 +78,7 @@ namespace PassengerShipingCo.Windows
             UpdateShipsListView();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddNewShipBtn_Click(object sender, RoutedEventArgs e)
         {
             AddEditShip addEditShip = new AddEditShip(null);
             addEditShip.ShowDialog();

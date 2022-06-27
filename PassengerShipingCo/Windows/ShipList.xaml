@@ -18,7 +18,7 @@
         <ListView x:Name="ShipsListView" Grid.Row="1" MouseDoubleClick="ShipsListView_MouseDoubleClick"/>
 
         <Grid Grid.Row="2">
-            <Button Content="Добавить новое судно" Click="Button_Click"/>
+            <Button x:Name="AddNewShip" Content="Добавить новое судно" Click="AddNewShipBtn_Click"/>
         </Grid>
 
     </Grid>
